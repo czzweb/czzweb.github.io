@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <title>结婚邀请函</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+  </head>
+  <body>
+      <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide slider-one">
+                <h1 class="home-title"></h1>
+              </div>
+              <div class="swiper-slide slider-two">
+                <img class="wedding-icon" src="./images/wedding.png" alt="">
+                <img src="./images/border/1.png" class="border border1" alt="">
+                <img src="./images/border/2.png" class="border border2" alt="">
+                <img src="./images/border/3.png" class="border border3" alt="">
+                <img src="./images/border/4.png" class="border border4" alt="">
+                <p class="desc">在这浪漫缤纷的美好时节，诚挚地邀请您<br>参与见证这神圣的婚约誓言</p>
+                <img class="sign" src="./images/sign.png" alt="">
+                <p style="display: none">非常感谢您来参加我们的婚礼，来和我们分享人生中如此重要的时刻。
+                  您所带来的每一份祝福都将伴随着我们，在未来的人生道路上走下去。
+                </p>
+                <h3><span>&nbsp;&nbsp;吕鑫</span>&<span>陆婷婷</span></h3>
+                <img class="under-line" src="./images/line.png" alt="">
+                <div class="date">2018.01.01</div>
+                <div class="small-size">18时18分入席</div>
+                <div class="house-name">花好月圆湖畔酒店</div>
+                <div class="addr small-size">城东镇星湖路18号（近七星湖南门）</div>
+              </div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+      </div>
+      <style>
+        body,
+        h1,
+        h2,
+        h3,
+        ul,
+        li {
+          padding: 0;
+          margin: 0;
+        }
+        li {
+          list-style: none;
+        }
+        p {
+          font-size: 12px;
+        }
+        .small-size {
+          font-size: 12px;
+        }
+        .swiper-container {
+          width: 100%;
+          height: 100%;
+        }
+        .swiper-container .swiper-pagination-bullet-active {
+          background-color: #d2807f;
+        }
+        .slider-one {
+          position: relative;
+          background-image: url('./images/poster.jpg');
+          background-position: center;
+          background-size: cover;
+        }
+        .home-title {
+          position: absolute;
+          bottom: 2px;
+          left: 0;
+          right: 0;
+          height: 50px;
+          background-image: url('./images/title.png');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        .slider-two {
+          position: relative;
+          text-align: center;
+          background-color: #fafafa;
+        }
+        .slider-two .wedding-icon {
+          width: 120px;
+        }
+        .slider-two .border {
+          position: absolute;
+          width: 20%;
+        }
+        .slider-two .border1 {
+          left: 0;
+          top: 0;
+        }
+        .slider-two .border2 {
+          right: 0;
+          top: 0;
+        }
+        .slider-two .border3 {
+          left: 0;
+          bottom: 0;
+        }
+        .slider-two .border4 {
+          right: 0;
+          bottom: 0;
+        }
+        .slider-two .desc {
+          margin: 30px 0;
+        }
+        .slider-two .sign {
+          margin-left: 3px;
+          margin-bottom: 6px;
+        }
+        .slider-two h3 {
+          margin: 0 20px;
+          font-size: 16px;
+          font-weight: 400;
+        }
+        .slider-two h3 span {
+          padding: 0 10px;
+          font-size: 18px;
+        }
+        .slider-two .under-line {
+          margin-top: -4px;
+          width: 210px;
+        }
+        .slider-two .date {
+          margin-top: 20px;
+          font-family: 'Times New Roman';
+          font-size: 24px;
+        }
+        .slider-two .house-name {
+          margin-top: 20px;
+        }
+      </style>
+      <script src="./js/swiper.min.js"></script>
+      <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+      <script>
+        var mySwiper = new Swiper ('.swiper-container', {
+          // Optional parameters
+          direction: 'vertical',
+          loop: true,
+
+          // If we need pagination
+          pagination: {
+            el: '.swiper-pagination',
+          },
+        })
+
+        wx.config({
+          debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+          appId: 'wx108457cda8a1b9f9', // 必填，企业号的唯一标识，此处填写企业号corpid
+          timestamp:  Date.parse(new Date()) / 1000, // 必填，生成签名的时间戳
+          nonceStr: Math.ceil(Math.random() * Date.now() * 100000).toString(16), // 必填，生成签名的随机串
+          signature: '',// 必填，签名，见附录1
+          jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        var shareConfig = {
+          title: '我们结婚啦',
+          link: '',
+          desc: '吕鑫&陆婷婷欢迎各位亲朋好友来参加我们的婚礼。',
+          imgUrl: './images/avatar.jpg'
+        }
+
+        wx.onMenuShareTimeline(shareConfig);
+        wx.onMenuShareAppMessage(shareConfig);
+      </script>
+  </body>
+</html>
